@@ -28,5 +28,6 @@ let package = Package(
         .testTarget(
             name: "CliTests",
             dependencies: ["Cli"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
