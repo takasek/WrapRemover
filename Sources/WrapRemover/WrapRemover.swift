@@ -1,19 +1,24 @@
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
-typealias Font = UIFont
+public typealias Font = UIFont
 #elseif os(macOS)
 import Cocoa
-typealias Font = NSFont
+public typealias Font = NSFont
 #endif
 
 public struct WrapRemover {
-    public let text: String
+    let text: String
+    let lines: [Line]
+    let metrics: Metrics
 
-    public init(text: String) {
+    public init(text: String, font: Font) {
         self.text = text
+        lines = text.split(separator: "\n")
+            .map { Line(String($0), font: font) }
+        metrics = Metrics(lines: lines)
     }
 
-    struct Metrics {
+    public struct Metrics {
 //        let average: CGFloat
 //        let variance: CGFloat
 
@@ -57,11 +62,7 @@ public struct WrapRemover {
         }
     }
 
-    public func main() -> String {
-        let font = NSFont.systemFont(ofSize: 12.0)
-        let lines = text.split(separator: "\n").map { Line(String($0), font: font) }
-        let metrics = Metrics(lines: lines)
-
+    public func execute() async -> String {
 //        let results = zip(lines, lines...).map { l, nextLine in (l, Estimation(...)) }
 
 //        let resolveds: [(String, Bool)] = await resolve(results)
