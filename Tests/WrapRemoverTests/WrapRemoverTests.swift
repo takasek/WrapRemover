@@ -1,11 +1,11 @@
 import XCTest
-@testable import Cli
+@testable import WrapRemover
 
-final class CliTests: XCTestCase {
+final class WrapRemoverTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(Cli().text, "Hello, World!")
+        XCTAssertEqual(WrapRemover().text, "Hello, World!")
     }
 }

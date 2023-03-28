@@ -1,3 +1,3 @@
-# WrapRemoverLib
+# WrapRemover
 
 A description of this package.
