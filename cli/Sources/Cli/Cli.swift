@@ -1,8 +1,10 @@
+import WrapRemoverLib
+
 @main
-public struct WrapRemover {
+public struct Cli {
     public private(set) var text = "Hello, World!"
 
     public static func main() {
-        print(WrapRemover().text)
+        print(WrapRemoverLib().text)
     }
 }
